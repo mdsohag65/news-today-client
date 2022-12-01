@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contenxts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
@@ -42,7 +42,7 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link>
+                        <>
                             {
                                 user?.uid ?
                                     <>
@@ -55,14 +55,12 @@ const Header = () => {
                                         <Link to="/register">Register</Link>
                                     </>
                             }
-                        </Nav.Link>
-                        <Nav.Link eventKey={2}>
-                            {
-                                user?.photoURL ?
-                                    <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL}></Image> :
-                                    <FaUserCircle></FaUserCircle>
-                            }
-                        </Nav.Link>
+                        </>
+                        {
+                            user?.photoURL ?
+                                <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL}></Image> :
+                                <FaUser></FaUser>
+                        }
                     </Nav>
                     <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>
